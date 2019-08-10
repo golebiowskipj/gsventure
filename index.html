@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="G&S Venture - we build awesome apps">
+    <title>G&S Venture</title>
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,500,700&display=swap" rel="stylesheet">
+    <link href="./css/styles.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <h2 class="logo">G&S Venture</h2>
+    </header>
+    <main class="main">
+        <section class="right">
+            <div class="uber-grid">
+                <div class="uber-grid__square  border-top border-left"></div>
+                <div class="uber-grid__square  border-top"></div>
+                <div class="uber-grid__square  border-top border-right border-bottom"></div>
+                <div class="uber-grid__square border-top border-right border-bottom"></div>
+                <div class="uber-grid__square border-top border-right border-bottom"></div>
+                <div class="uber-grid__square  border-left border-bottom"></div>
+                <div class="uber-grid__square  border-right border-bottom"></div>
+                <div class="uber-grid__square border-right border-bottom"></div>
+                <div class="uber-grid__square border-right border-bottom"></div>
+                <div class="uber-grid__square border-right border-bottom"></div>
+                <div class="uber-grid__square border-left border-right border-bottom"></div>
+                <div class="uber-grid__square border-right border-bottom"></div>
+                <div class="uber-grid__square border-right border-bottom"></div>
+                <div class="uber-grid__square border-right border-bottom"></div>
+                <div class="uber-grid__square border-right border-bottom"></div>
+                <div class="uber-grid__square border-left border-right border-bottom"></div>
+                <div class="uber-grid__square border-right border-bottom"></div>
+                <div class="uber-grid__square border-right border-bottom"></div>
+                <div class="uber-grid__square "></div>
+                <div class="uber-grid__square border-right"></div>
+                <div class="uber-grid__square border-left border-right border-bottom"></div>
+                <div class="uber-grid__square border-bottom"></div>
+                <div class="uber-grid__square  border-bottom border-left"></div>
+                <div class="uber-grid__square  border-bottom"></div>
+                <div class="uber-grid__square  border-right border-bottom"></div>
+            </div>
+        </section>
+        <section class="left">
+            <h3 class="underconstruction">Site under construction</h3>
+            <h1 class="h1">We Build Modern Mobile Apps</h1>
+            <button class="btn js-openPopUp" type="button">About us</button>
+        </section>
+    </main>
+    <section class="overlay js-overlay"></section>
+    <section class="popup js-popup" style="display: none; opacity:0;">
+        <div class="popup__overlay"></div>
+        <div class="popup__body">
+            <button type="button" class="btn btn-back js-back">BACK</button>
+            <h3 class="name">G&S Venture OÜ</h3>
+            <p class="adress">Harju maakond, Tallinn, Lasnamäe linnaosa</p>
+            <p class="adress"> Lõõtsa tn 5, 11415</p>
+            <p class="email"> office@parantaga.com </p>
+            <p class="phone"><a href="#">+372&nbsp;56753473</a></p>
+        </div>
+    </section>
+    <!-- opening popup -->
+    <script>
+        const overlay = document.querySelector('.js-overlay');
+        const button = document.querySelector('.js-openPopUp');
+        const popup = document.querySelector('.js-popup');
+        const close = document.querySelector('.js-back');
+        const openPopUp = () => {
+            overlay.style.width = '100vw';
+            setTimeout(() => {
+                popup.style.display = 'flex';
+                setTimeout(() => {
+                    popup.style.opacity = 1;
+                })
+            }, 200);
+
+        }
+        const closePopUp = () => {
+            popup.style.opacity = 0;
+            setTimeout(() => {
+                    popup.style.display = 'none';
+
+                },
+                200)
+            overlay.style.width = 0;
+
+        }
+        button.addEventListener('click', openPopUp);
+        close.addEventListener('click', closePopUp);
+    </script>
+    <!-- table animation -->
+    <script>
+        // zlapac kazdy element
+        const allSquares = Array.from(document.querySelectorAll('.uber-grid__square'));
+
+        // podswietla go i dodaje do listy 3 nacisnietych
+        let activeSquares = [];
+        const highlight = (e) => {
+            if (activeSquares.length < 3) {
+                e.target.classList.add('uber-grid__square--active');
+                activeSquares.push(e.target);
+            } else if (activeSquares.length === 3) {
+                e.target.classList.add('uber-grid__square--active');
+                activeSquares.push(e.target);
+                activeSquares[0].classList.remove('uber-grid__square--active');
+                activeSquares.shift();
+            }
+        }
+        allSquares.forEach(el => el.addEventListener('click', highlight));
+    </script>
+</body>
+
+</html>
