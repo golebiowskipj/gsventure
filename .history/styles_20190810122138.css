@@ -34,7 +34,7 @@ a {
 .main {
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto 50px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
